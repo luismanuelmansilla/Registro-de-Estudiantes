@@ -18,7 +18,7 @@ public class Lab1 {
     
     Scanner sc = new Scanner(System.in);
     String opcion;
-    
+    //[rojk
     do{
         
         System.out.print(

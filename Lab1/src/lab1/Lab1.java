@@ -90,12 +90,12 @@ public class Lab1 {
     public static void registrarCalificacion(){
         
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n\t\t Registrar calificación de estudiante\n");
-        System.out.print("Matricula del estudiante: "); 
-	
-        String matricula = sc.nextLine();
         Estudiante estudiante = null;
         boolean error = false;
+        
+        System.out.println("\n\t\t Registrar calificación de estudiante\n");
+        System.out.print("Matricula del estudiante: ");
+        String matricula = sc.nextLine();
         
         for(Estudiante est : registro.estudiantes){
             
@@ -120,9 +120,28 @@ public class Lab1 {
     
     public static void borrarEstudiante(){
         
+        Scanner sc = new Scanner(System.in);
+         Estudiante estudiante = null;
+        boolean error = false;
         
+        System.out.println("\n\t\t Borrar estudiante\n");
+        System.out.print("Matricula del estudiante: ");
+        String matricula = sc.nextLine();
         
+        for(Estudiante est : registro.estudiantes){
+            
+            if(est.getMatricula().contains(matricula)){
+                estudiante = est;
+                
+                
+                System.out.println("\n--Calificación registrada con éxito!--\n");
+            }
+            error = true;
+	}
         
+        if(error == true){
+            System.out.println("La matricula introducida no corresponde a ningun estudiante");
+        }
     }
     
     

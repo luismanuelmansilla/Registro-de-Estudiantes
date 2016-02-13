@@ -5,6 +5,7 @@
  */
 package lab1;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -14,17 +15,17 @@ import java.util.Scanner;
 public class Lab1 {
     
     public static Registro registro = new Registro();
-    public static Scanner sc = new Scanner(System.in);
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws FileNotFoundException {
         // TODO code application logic here
-    
+        
+    Scanner sc = new Scanner(System.in);
     String opcion;
     
     do{
         
         System.out.print(
-				"\n\t\t Laboratorio 1 Tecnicas"
+				"\n\t\t Laboratorio 1 Tecnicas \n"
 			+	"1) Registrar un nuevo estudiante.\n"
 			+	"2) Borrar un estudiante.\n"
 			+	"3) Registrar una calificación para un estudiante.\n"
@@ -50,7 +51,9 @@ public class Lab1 {
 			case "3": registrarCalificacion();
 			break;
 			
-			case "4": System.out.println("Gracias por usar el programa, hasta la próxima!!\n");
+			case "4": 
+                            registro.guardarEstudiantes();
+                            System.out.println("Gracias por usar el programa, hasta la próxima!!\n");
 			break;
 			
 			default: System.out.println("Error! Opción no valida!\n");
@@ -60,13 +63,13 @@ public class Lab1 {
     
     public static void registrarEstudiante(){
         
-        clearConsole();
-        System.out.println("\t\t Registrar estudiante");
-        System.out.println("\n Matricula: "); 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\t\t Registrar estudiante\n");
+        System.out.print("Matricula: "); 
 	String matricula = sc.nextLine();
-        System.out.println("\n Nombre: "); 
+        System.out.print("Nombre: "); 
 	String nombre = sc.nextLine();
-	System.out.println("Apellido: ");
+	System.out.print("Apellido: ");
 	String apellido = sc.nextLine();
         
         registro.registrarEstudiante(nombre, apellido, matricula);
@@ -76,7 +79,7 @@ public class Lab1 {
     
     public static void registrarCalificacion(){
         
-        clearConsole();
+        Scanner sc = new Scanner(System.in);
         System.out.println("\t\t Registrar calificación de estudiante\n");
         System.out.println("\n Matricula del estudiante: "); 
 	
@@ -107,22 +110,6 @@ public class Lab1 {
         
     }
     
-    public final static void clearConsole(){
-        try
-        {
-            final String os = System.getProperty("os.name");
-
-            if (os.contains("Windows")){
-                Runtime.getRuntime().exec("cls");
-            }
-            else{
-            Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e)
-        {
-            //  Handle any exceptions.
-        }
-    }
+    
     
 }

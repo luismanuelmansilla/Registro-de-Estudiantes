@@ -47,7 +47,7 @@ public class Calificacion {
     }
     
     public String toString(){
-		return estudiante.matricula + "," + tarea +  "," + nota + "\n"; 		
-	}
+		return estudiante.getMatricula() + "," + tarea +  "," + nota + "\n"; 		
+    }
     
 }

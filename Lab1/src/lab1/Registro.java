@@ -50,6 +50,22 @@ public class Registro {
 	pw.close();//para cerar el print writer
     }
     
+    public void guardarCalificaciones() throws FileNotFoundException{
+        
+        PrintWriter pw = new PrintWriter(calificacionesCSV);
+	
+        pw.println("Matricula,Tarea,Nota");
+        for (int i = 0; i < calificaciones.size(); i++) {
+            Calificacion tempCalif = calificaciones.get(i);
+            if (tempCalif != null) {
+                pw.println(tempCalif);
+            }
+        }
+        
+        pw.flush(); //Descarga todo lo que se escribio 
+	pw.close();//para cerar el print writer
+    }
+    
     
     
 }

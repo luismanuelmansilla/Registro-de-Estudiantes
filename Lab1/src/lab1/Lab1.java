@@ -23,10 +23,9 @@ public class Lab1 {
     String opcion;
     
     do{
-        
+        System.out.println("\n\t\t Laboratorio 1 Tecnicas \n");
         System.out.print(
-				"\n\t\t Laboratorio 1 Tecnicas \n"
-			+	"1) Registrar un nuevo estudiante.\n"
+				"1) Registrar un nuevo estudiante.\n"
 			+	"2) Borrar un estudiante.\n"
 			+	"3) Registrar una calificación para un estudiante.\n"
 			+	"4) Salir.\n"
@@ -40,19 +39,30 @@ public class Lab1 {
 			break;
 			
 			case "2": 
-				System.out.print("\n");
+                            System.out.print("\n");
+                            if(registro.estudiantes.isEmpty()){
+                                System.out.println("No hay estudiantes registrados. \n");	
+                            }else{
+                                borrarEstudiante();
+                            }
+			break;
+			
+			case "3": 
+                            System.out.print("\n");
 				if(registro.estudiantes.isEmpty()){
 					System.out.println("No hay estudiantes registrados. \n");	
 				}else{
-					borrarEstudiante();
+                                        registrarCalificacion();
 				}
-			break;
-			
-			case "3": registrarCalificacion();
+                            
+                            
+                           
 			break;
 			
 			case "4": 
+                            registro.guardarCalificaciones();
                             registro.guardarEstudiantes();
+                            
                             System.out.println("Gracias por usar el programa, hasta la próxima!!\n");
 			break;
 			
@@ -64,7 +74,7 @@ public class Lab1 {
     public static void registrarEstudiante(){
         
         Scanner sc = new Scanner(System.in);
-        System.out.println("\t\t Registrar estudiante\n");
+        System.out.println("\n\t\t Registrar estudiante\n");
         System.out.print("Matricula: "); 
 	String matricula = sc.nextLine();
         System.out.print("Nombre: "); 
@@ -73,34 +83,39 @@ public class Lab1 {
 	String apellido = sc.nextLine();
         
         registro.registrarEstudiante(nombre, apellido, matricula);
-        System.out.println("\n--Estudiante registrado con éxito! Presione cualquier tecla para regresar al menú principal--\n");
+        System.out.println("\n--Estudiante registrado con éxito!--\n");
         
     }
     
     public static void registrarCalificacion(){
         
         Scanner sc = new Scanner(System.in);
-        System.out.println("\t\t Registrar calificación de estudiante\n");
-        System.out.println("\n Matricula del estudiante: "); 
+        System.out.println("\n\t\t Registrar calificación de estudiante\n");
+        System.out.print("Matricula del estudiante: "); 
 	
         String matricula = sc.nextLine();
         Estudiante estudiante = null;
+        boolean error = false;
         
         for(Estudiante est : registro.estudiantes){
+            
             if(est.getMatricula().contains(matricula)){
-                est = estudiante;
+                estudiante = est;
+                System.out.print("Tarea: "); 
+                String tarea = sc.nextLine();
+                System.out.print("Nota: ");
+                String nota = sc.nextLine();
+        
+                registro.registrarCalificacion(estudiante, tarea, nota);
+                System.out.println("\n--Calificación registrada con éxito!--\n");
             }
-            System.out.println("La matricula introducida no corresponde a ningun estudiante");
-            return ;
+            error = true;
 	}
         
-        System.out.println("\n Tarea: "); 
-	String tarea = sc.nextLine();
-	System.out.println("\n Nota: ");
-	String nota = sc.nextLine();
-        
-        registro.registrarCalificacion(estudiante, tarea, nota);
-        System.out.println("\n--Calificación registrada con éxito! Presione cualquier tecla para regresar al menú principal--\n");
+        if(error == true){
+            System.out.println("La matricula introducida no corresponde a ningun estudiante");
+        }
+
     }
     
     public static void borrarEstudiante(){

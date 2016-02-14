@@ -6,6 +6,7 @@
 package lab1;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -16,9 +17,10 @@ public class Lab1 {
     
     public static Registro registro = new Registro();
     
-    public static void main(String args[]) throws FileNotFoundException {
+    public static void main(String args[]) throws FileNotFoundException, IOException {
         // TODO code application logic here
-        
+    registro.leerEstudiantes();
+    
     Scanner sc = new Scanner(System.in);
     String opcion;
     

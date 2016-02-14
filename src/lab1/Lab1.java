@@ -34,10 +34,11 @@ public class Lab1 {
         System.out.println("\n\t\t Laboratorio 1 Tecnicas \n");
         System.out.print(
 				"1) Registrar un nuevo estudiante.\n"
-			+	"2) Borrar un estudiante.\n"
-			+	"3) Registrar una calificación para un estudiante.\n"
-			+	"4) Salir.\n"
-			+   "Seleccione una opción=>"
+                        +       "2) Listar estudiantes registrados.\n"
+			+	"3) Borrar un estudiante.\n"
+			+	"4) Registrar una calificación para un estudiante.\n"
+			+	"5) Salir.\n"
+			+       "Seleccione una opción =>"
 			);
         opcion = sc.next();
         
@@ -45,8 +46,9 @@ public class Lab1 {
 		
 			case "1": registrarEstudiante();
 			break;
-			
-			case "2": 
+                        case "2": listarEstudiantes();
+			break;
+                        case "3": 
                             System.out.print("\n");
                             if(registro.estudiantes.isEmpty()){
                                 System.out.println("No hay estudiantes registrados. \n");	
@@ -54,29 +56,23 @@ public class Lab1 {
                                 borrarEstudiante();
                             }
 			break;
-			
-			case "3": 
+			case "4": 
                             System.out.print("\n");
 				if(registro.estudiantes.isEmpty()){
 					System.out.println("No hay estudiantes registrados. \n");	
 				}else{
                                         registrarCalificacion();
-				}
-                            
-                            
-                           
+				}                           
 			break;
-			
-			case "4": 
+			case "5": 
                             registro.guardarCalificaciones();
                             registro.guardarEstudiantes();
-                            
                             System.out.println("Gracias por usar el programa, hasta la próxima!!\n");
 			break;
 			
 			default: System.out.println("Error! Opción no valida!\n");
             }
-        }while(!opcion.equals("4")); 
+        }while(!opcion.equals("5")); 
     }
     
     public static void registrarEstudiante(){
@@ -147,7 +143,6 @@ public class Lab1 {
                             for(Calificacion calif : registro.calificaciones){
                                 if(calif.getEstudiante().equals(est)){
                                     registro.calificaciones.remove(calif);
-                                
                                 }
                             }
                         }catch (Exception e){
@@ -169,6 +164,17 @@ public class Lab1 {
             }
         }catch (Exception e){
             
+        }
+    }
+    
+    public static void listarEstudiantes(){
+        System.out.println("\n\t\t Estudiantes registrados");
+        System.out.println("\nMatricula,Tarea,Nota");
+        for (int i = 0; i < registro.estudiantes.size(); i++){
+            Estudiante tempEst = registro.estudiantes.get(i);
+            if (tempEst != null) {
+                System.out.println(tempEst);
+            }
         }
     }
       

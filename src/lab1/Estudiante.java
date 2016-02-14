@@ -50,6 +50,9 @@ public class Estudiante {
     public String toString(){
 		return matricula + "," + nombre +  "," + apellido; 		
     }
-    
-    
+
+    /*public String toString(boolean flag){
+		return matricula + ", " + nombre +  ", " + apellido; 		
+    }*/
+
 }

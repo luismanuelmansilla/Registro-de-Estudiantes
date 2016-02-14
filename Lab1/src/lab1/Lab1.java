@@ -19,7 +19,13 @@ public class Lab1 {
     
     public static void main(String args[]) throws FileNotFoundException, IOException {
         // TODO code application logic here
-    registro.leerEstudiantes();
+    
+    try{
+        registro.leerEstudiantes();
+        registro.leerCalificaciones();
+    }catch(Exception e){
+        
+    }
     
     Scanner sc = new Scanner(System.in);
     String opcion;

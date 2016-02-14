@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Lab1 {
     
     public static Registro registro = new Registro();
-    
+    //
     public static void main(String args[]) throws FileNotFoundException, IOException {
         // TODO code application logic here
     

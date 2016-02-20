@@ -134,36 +134,32 @@ public class Lab1 {
         System.out.print("Matricula del estudiante: ");
         String matricula = sc.nextLine();
         
-        try{
-            for(Estudiante est : registro.estudiantes){
-                if(est.getMatricula().contains(matricula)){
+        for(Estudiante est : registro.estudiantes){
+            if(est.getMatricula().equals(matricula)){
                     
-                    if(registro.calificaciones.size() > 0){
-                        try{
-                            for(Calificacion calif : registro.calificaciones){
-                                if(calif.getEstudiante().equals(est)){
-                                    registro.calificaciones.remove(calif);
-                                }
+                if(registro.calificaciones.size() > 0){
+                    try{
+                        for(Calificacion calif : registro.calificaciones){
+                            if(calif.getEstudiante().equals(est)){
+                                registro.calificaciones.remove(calif);
                             }
-                        }catch (Exception e){
-            
                         }
-                    }
-                    
-                    registro.estudiantes.remove(est);
-                    System.out.println("\n--Estudiante borrado con éxito!--\n");
-                    error = false;
-                    
-                }else{
-                    error = true;
-                } 
-            }
-
-            if(error == true){
-                System.out.println("La matricula introducida no corresponde a ningun estudiante");
-            }
-        }catch (Exception e){
+                    }catch (Exception e){
             
+                    }
+                }
+                    
+                registro.estudiantes.remove(est);
+                System.out.println("\n--Estudiante borrado con éxito!--\n");
+                error = false;
+                    
+            }else{
+                error = true;
+            } 
+        }
+
+        if(error == true){
+            System.out.println("La matricula introducida no corresponde a ningun estudiante");
         }
     }
     
